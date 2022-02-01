@@ -50,9 +50,8 @@ const deleteContact = createAsyncThunk(
   async (id) => {
     try {
       await fetchDeleteContact(id);
-      const newContacts = await fetchContacts();
       toast.success("You delete contact");
-      return newContacts;
+      return id;
     } catch (error) {
       toast.error(`${"Something went wrong please try again"}`);
     }
