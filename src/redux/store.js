@@ -15,7 +15,7 @@ import { authReducer } from "./auth";
 import conatactsReducer from "./contacts/contactsSlice";
 
 const persistAuthConfig = {
-  key: "contacts",
+  key: "auth",
   storage,
   whitelist: ["token"],
 };

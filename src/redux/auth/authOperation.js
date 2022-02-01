@@ -76,7 +76,7 @@ const fetchCurentUser = createAsyncThunk(
       const { data } = await axios.get("/users/current");
       return data;
     } catch (error) {
-      toast.error(`${"Something went wrong please try again"}`);
+      // toast.error(`${"Something went wrong please try again"}`);
       return thunkAPI.rejectWithValue(error);
     }
   }
