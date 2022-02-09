@@ -7,6 +7,7 @@ const titleStyle = {
   marginTop: "30px",
   marginBottom: "30px",
   textAlign: "center",
+  color: "#ffffff",
 };
 
 const formStyle = {
@@ -19,6 +20,7 @@ const labelStyle = {
   display: "flex",
   flexDirection: "column",
   fontSize: "22px",
+  color: "#ffffff",
 };
 
 const inputStyle = {
@@ -26,6 +28,9 @@ const inputStyle = {
   padding: "5px 10px",
   fontSize: "16px",
   boxShadow: "5px 5px 5px -5px rgba(34, 60, 80, 0.6) inset",
+  borderRadius: "4px",
+  borderColor: "transparent",
+  outline: "none",
 };
 
 export default function RegisterView() {

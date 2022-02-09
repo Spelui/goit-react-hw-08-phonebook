@@ -41,14 +41,14 @@ p {
   color: #ffffff;
   border-radius: 4px;
   cursor: pointer;
-  border: 2px solid #2196f3;
+  border: 1px solid #2196f3;
 }
 
 .btn:hover,
 .btn:focus {
   background-image: radial-gradient(
     circle farthest-corner at 10% 20%,
-    rgba(171, 102, 255, 1) 0%,
+    rgb(65, 13, 128) 0%,
     rgba(116, 182, 247, 1) 90%
   );
 }
