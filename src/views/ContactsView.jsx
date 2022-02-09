@@ -64,9 +64,13 @@ const ContactsView = () => {
 
         <ContactForm onSubmit={onSubmitName} />
 
-        <h2 style={title}>Contacts</h2>
+        {contacts.length > 0 && (
+          <div>
+            <h2 style={title}>Contacts</h2>
 
-        <Filter onChangeValue={onFilterValueChange} filter={filter} />
+            <Filter onChangeValue={onFilterValueChange} filter={filter} />
+          </div>
+        )}
 
         <ContactList
           filterContactsList={filterResult}

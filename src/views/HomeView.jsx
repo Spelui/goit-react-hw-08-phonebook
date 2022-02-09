@@ -4,9 +4,9 @@ import { authSelectors } from "../redux/auth";
 
 const titleStyle = {
   fontSize: "28px",
-  marginTop: "30px",
-  marginBottom: "30px",
+  marginTop: "80px",
   textAlign: "center",
+  color: "#ffffff",
 };
 
 const HomeView = () => {

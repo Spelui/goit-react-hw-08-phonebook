@@ -1,6 +1,7 @@
 .header {
-  padding: 20px 0;
+  padding: 15px 0;
   border-bottom: 2px solid #000000;
+  background: #ffffff;
 
   &__bar {
     display: flex;
@@ -29,11 +30,36 @@
   }
 
   &__user {
+    position: relative;
     display: flex;
   }
 
-  &__text {
-    margin-right: 20px;
-    font-size: 20px;
+  &__dropbox {
+    position: relative;
+    background-color: #f9f9f9;
+    color: #0f0f0f;
+    padding: 10px 32px 10px 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  }
+
+  .dropdown-content {
+    position: absolute;
+    bottom: -40px;
+    left: 20%;
+    z-index: 98;
+  }
+
+  .arrow {
+    position: absolute;
+    top: 13px;
+    right: 15px;
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
   }
 }
