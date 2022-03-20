@@ -1,8 +1,11 @@
 import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import "./HeaderStyle.scss";
 
 export const AuthNav = () => {
+  const { t } = useTranslation();
+
   return (
     <div>
       <NavLink
@@ -11,7 +14,7 @@ export const AuthNav = () => {
         }
         to="/register"
       >
-        Register
+        {t("register")}
       </NavLink>
 
       <NavLink
@@ -20,7 +23,7 @@ export const AuthNav = () => {
         }
         to="/login"
       >
-        Login
+        {t("login")}
       </NavLink>
     </div>
   );

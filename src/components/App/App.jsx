@@ -1,80 +1,94 @@
-import { useEffect } from "react";
+import { useEffect, Suspense, lazy } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
 
+import LanguageSwitcher from "../../common/LanguageSwitcher/LanguageSwitcher";
+
 import { PrivateRoute } from "../UserMenu/PrivateRoute";
-import { PublickRoute } from "../UserMenu/PublickRoute";
+import { PublicRoute } from "../UserMenu/PublicRoute";
 import AppBar from "../AppBar";
 import { authOperations, authSelectors } from "../../redux/auth";
-
-import ContactsView from "../../views/ContactsView";
-import HomeView from "../../views/HomeView";
-import RegisterView from "../../views/RegisterView";
-import LoginView from "../../views/LoginView";
+import Loader from "../../common/Loader/Loader";
 
 import "react-toastify/dist/ReactToastify.css";
 
-// const ContactsView = lazy(() => import("../../views/ContactsView"));
-// const HomeView = lazy(() => import("../../views/HomeView"));
-// const RegisterView = lazy(() => import("../../views/RegisterView"));
-// const LoginView = lazy(() => import("../../views/LoginView"));
+const ContactsView = lazy(() =>
+  import("../../views/ContactsView" /* webpackChunkName: "Contacts___page" */)
+);
+const HomeView = lazy(() =>
+  import("../../views/HomeView" /* webpackChunkName: "Home___page" */)
+);
+const RegisterView = lazy(() =>
+  import("../../views/RegisterView" /* webpackChunkName: "Register___page" */)
+);
+const LoginView = lazy(() =>
+  import("../../views/LoginView" /* webpackChunkName: "Login___page" */)
+);
 
 const App = () => {
   const dispatch = useDispatch();
-  const isFetchCurent = useSelector(authSelectors.getIsFetchCurent);
+  const isFetchCurrent = useSelector(authSelectors.getIsFetchCurent);
 
   useEffect(() => {
     dispatch(authOperations.fetchCurentUser());
   }, [dispatch]);
 
   return (
-    !isFetchCurent && (
+    !isFetchCurrent && (
       <>
         <AppBar />
         <main>
-          <Routes>
-            <Route
-              path="/goit-react-hw-08-phonebook"
-              element={<Navigate to="/" />}
-            />
+          <div>
+            <Suspense fallback={<Loader />}>
+              <LanguageSwitcher />
+            </Suspense>
+          </div>
 
-            <Route
-              path="/"
-              element={
-                <PublickRoute>
-                  <HomeView />
-                </PublickRoute>
-              }
-            />
+          <Suspense fallback={"Loading page...."}>
+            <Routes>
+              <Route
+                path="/goit-react-hw-08-phonebook"
+                element={<Navigate to="/" />}
+              />
 
-            <Route
-              path="/register"
-              element={
-                <PublickRoute restricted redirectTo="/">
-                  <RegisterView />
-                </PublickRoute>
-              }
-            />
+              <Route
+                path="/"
+                element={
+                  <PublicRoute>
+                    <HomeView />
+                  </PublicRoute>
+                }
+              />
 
-            <Route
-              path="/login"
-              element={
-                <PublickRoute restricted redirectTo="/contacts">
-                  <LoginView />
-                </PublickRoute>
-              }
-            />
+              <Route
+                path="/register"
+                element={
+                  <PublicRoute restricted redirectTo="/">
+                    <RegisterView />
+                  </PublicRoute>
+                }
+              />
 
-            <Route
-              path="/contacts"
-              element={
-                <PrivateRoute>
-                  <ContactsView />
-                </PrivateRoute>
-              }
-            />
-          </Routes>
+              <Route
+                path="/login"
+                element={
+                  <PublicRoute restricted redirectTo="/contacts">
+                    <LoginView />
+                  </PublicRoute>
+                }
+              />
+
+              <Route
+                path="/contacts"
+                element={
+                  <PrivateRoute>
+                    <ContactsView />
+                  </PrivateRoute>
+                }
+              />
+            </Routes>
+          </Suspense>
           <ToastContainer />
         </main>
       </>

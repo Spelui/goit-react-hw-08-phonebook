@@ -1,9 +1,11 @@
+import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { authSelectors } from "../redux/auth";
 
 export const Navigation = () => {
   const isLogIn = useSelector(authSelectors.getIsLoggedIn);
+  const { t } = useTranslation();
 
   return (
     <nav>
@@ -13,7 +15,7 @@ export const Navigation = () => {
           isActive ? "header__link header__link--active" : "header__link"
         }
       >
-        Welcome Page
+        {t("welcome")}
       </NavLink>
 
       {isLogIn && (
@@ -23,7 +25,7 @@ export const Navigation = () => {
             isActive ? "header__link header__link--active" : "header__link"
           }
         >
-          Contacts
+          {t("contacts")}
         </NavLink>
       )}
     </nav>

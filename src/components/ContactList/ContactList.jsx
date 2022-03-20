@@ -1,7 +1,11 @@
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
+
 import s from "./ContactList.module.scss";
 
 const ContactList = ({ filterContactsList, onClickDel }) => {
+  const { t } = useTranslation();
+
   return (
     <ul className={s.contacts__list}>
       {filterContactsList.map(({ name, number, id }) => (
@@ -10,7 +14,7 @@ const ContactList = ({ filterContactsList, onClickDel }) => {
             {name}: <span className={s.contacts__number}>{number}</span>
           </p>
           <button className="btn" onClick={() => onClickDel(id)} type="button">
-            Delete
+            {t("del-btn")}
           </button>
         </li>
       ))}

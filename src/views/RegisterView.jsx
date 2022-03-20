@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { authOperations } from "../redux/auth";
 
 const titleStyle = {
@@ -39,6 +40,8 @@ export default function RegisterView() {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
 
+  const { t } = useTranslation();
+
   const onHandleChange = (e) => {
     // eslint-disable-next-line default-case
     switch (e.target.name) {
@@ -61,10 +64,10 @@ export default function RegisterView() {
 
   return (
     <div className="container">
-      <h2 style={titleStyle}>Register</h2>
+      <h2 style={titleStyle}>{t("register")}</h2>
       <form onSubmit={onSubmit} style={formStyle}>
         <label style={labelStyle}>
-          Name
+          {t("name")}
           <input
             style={inputStyle}
             type="text"
@@ -75,7 +78,7 @@ export default function RegisterView() {
         </label>
 
         <label style={labelStyle}>
-          Email
+          {t("email")}
           <input
             style={inputStyle}
             type="email"
@@ -86,7 +89,7 @@ export default function RegisterView() {
         </label>
 
         <label style={labelStyle}>
-          Password
+          {t("password")}
           <input
             style={inputStyle}
             type="password"
@@ -97,7 +100,7 @@ export default function RegisterView() {
         </label>
 
         <button className="btn" type="submit">
-          Registration
+          {t("register-page.reg-btn")}
         </button>
       </form>
     </div>

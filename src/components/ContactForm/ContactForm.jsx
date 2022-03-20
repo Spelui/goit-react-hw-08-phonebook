@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import s from "./ContactForm.module.scss";
 
 const ContactForm = ({ onSubmit }) => {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
+  const { t } = useTranslation();
 
   const hendleChange = (key, value) => {
     if (key === "name") {
@@ -24,7 +26,7 @@ const ContactForm = ({ onSubmit }) => {
   return (
     <form onSubmit={handleSubmit} className={s.form}>
       <label className={s.label}>
-        Name
+        {t("name")}
         <input
           className={s.label__input}
           onChange={(e) => hendleChange(e.target.name, e.target.value)}
@@ -37,7 +39,7 @@ const ContactForm = ({ onSubmit }) => {
         />
       </label>
       <label className={s.label}>
-        Number
+        {t("number")}
         <input
           className={s.label__input}
           onChange={(e) => hendleChange(e.target.name, e.target.value)}
@@ -49,7 +51,7 @@ const ContactForm = ({ onSubmit }) => {
           required
         />
       </label>
-      <button className="btn">Add contact</button>
+      <button className="btn">{t("add-btn")}</button>
     </form>
   );
 };

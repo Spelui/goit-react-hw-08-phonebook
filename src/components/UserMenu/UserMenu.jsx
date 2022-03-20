@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import { authSelectors, authOperations } from "../../redux/auth";
 import "../HeaderStyle.scss";
@@ -11,10 +12,12 @@ export const UserMenu = () => {
 
   const userName = useSelector(authSelectors.getUserName);
 
+  const { t } = useTranslation();
+
   return (
     <div className="header__user">
       <button className="header__dropbox" onClick={toggleDropDawn}>
-        Welcome {userName} <span className="arrow down"></span>
+        {t("welcome")} {userName} <span className="arrow down"></span>
       </button>
       {dropDawn && (
         <div className="dropdown-content">
@@ -23,7 +26,7 @@ export const UserMenu = () => {
             className="btn"
             onClick={() => dispatch(authOperations.loginOut())}
           >
-            Log Out
+            {t("log-out")}
           </button>
         </div>
       )}

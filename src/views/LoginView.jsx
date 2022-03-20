@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { authOperations } from "../redux/auth";
 
@@ -37,6 +38,7 @@ const LoginView = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const onHandleChange = (e) => {
     // eslint-disable-next-line default-case
@@ -57,11 +59,11 @@ const LoginView = () => {
 
   return (
     <div className="container">
-      <h2 style={titleStyle}>Please write your Login and password</h2>
+      <h2 style={titleStyle}>{t("login-page.title")}</h2>
 
       <form onSubmit={onSubmit} style={formStyle}>
         <label style={labelStyle}>
-          Youre Email
+          {t("email")}
           <input
             style={inputStyle}
             type="email"
@@ -71,7 +73,7 @@ const LoginView = () => {
           />
         </label>
         <label style={labelStyle}>
-          Youre password
+          {t("password")}
           <input
             style={inputStyle}
             type="password"
@@ -80,7 +82,7 @@ const LoginView = () => {
             value={password}
           />
         </label>
-        <button className="btn">Login IN</button>
+        <button className="btn">{t("login")}</button>
       </form>
     </div>
   );

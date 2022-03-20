@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 import * as contactsActions from "../redux/contacts/contactsSlice";
 import ContactForm from "../components/ContactForm/ContactForm";
@@ -23,6 +24,7 @@ const ContactsView = () => {
   const contacts = useSelector((state) => state.contacts.items);
   const filter = useSelector((state) => state.contacts.filter);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(getContacts());
@@ -60,13 +62,13 @@ const ContactsView = () => {
   return (
     <section>
       <div className="container">
-        <h1 style={title}>Phonebook</h1>
+        <h1 style={title}>{t("phonebook")}</h1>
 
         <ContactForm onSubmit={onSubmitName} />
 
         {contacts.length > 0 && (
           <div>
-            <h2 style={title}>Contacts</h2>
+            <h2 style={title}>{t("contacts")}</h2>
 
             <Filter onChangeValue={onFilterValueChange} filter={filter} />
           </div>

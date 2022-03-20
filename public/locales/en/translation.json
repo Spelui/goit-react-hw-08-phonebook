@@ -1,0 +1,29 @@
+{
+  "login": "Login",
+  "log-out": "Log Out",
+
+  "welcome": "Welcome",
+
+  "home": "Welcome to Our Phone Book App",
+
+  "email": "Email",
+  "password": "Password",
+  "name": "Name",
+  "number": "Number",
+
+  "register": "Register",
+  "contacts": "Contacts",
+
+  "register-page": {
+    "reg-btn": "Registration"
+  },
+
+  "login-page": {
+    "title": "Please write your Login and password"
+  },
+
+  "phonebook": "Phonebook",
+  "add-btn": "Add Contact",
+  "filter": "Find contacts by name",
+  "del-btn": "Delete"
+}
